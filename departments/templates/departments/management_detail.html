@@ -1,0 +1,49 @@
+{% extends "departments_base.html" %}
+
+{% block title %}
+{{ management.full_name }} - {{ block.super }}
+{% endblock title %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'managements_list_url' %}">Руководство</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ management.full_name }}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col mb-3">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-4 mb-3">
+                <img class="img-fluid" src="{{ management.image.url }}" alt="management_img">
+            </div>
+            <div class="col-sm-12 col-md-8 mb-3">
+                <h3 class="font-weight-bold">{{ management.full_name|upper }}</h3>
+                <p class="font-weight-normal">{{ management.position }}</p>
+                <p class="font-weight-normal">{{ management.text }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 w-100">
+                <hr class="border">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm12 col-md-4 mt-3">
+                <h5 class="font-weight-bold text-uppercase">Биография</h5>
+            </div>
+            <div class="col-sm-12 col-md-8">
+                <p>{{ management.biografy|safe }}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

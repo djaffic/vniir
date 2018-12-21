@@ -1,0 +1,45 @@
+{% extends 'standards_base.html' %}
+
+{% block title %}
+{{ standard.title }} - {{ block.super }}
+{% endblock title %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'standards_and_standards_types_list_url' %}">Эталонная
+                    база</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ standard.title }}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="d-none d-md-block col-md-4">
+        <ul class="list-group">
+            {% for standard in filtered_standards %}
+            <li class="list-group-item"><a class="list_item__link" href="{{standard.get_absolute_url}}">
+                {{ standard.title|upper }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-8 col-12">
+        <div class="row">
+            <div class="col w-100 mb-3 text-center text-md-left">
+                <h6 class="font-weight-bold">{{ standard.title|upper }}</h6>
+            </div>
+        </div>
+        <div class="row align-items-center mb-3">
+            <div class="col">
+                <p class="font-weight-normal">{{ standard.text|safe }}</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

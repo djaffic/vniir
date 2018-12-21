@@ -1,0 +1,59 @@
+{% extends "departments_base.html" %}
+
+{% block title %}
+  Научно-исследовательские отделы - {{ block.super }}
+{% endblock title %}
+
+
+{% block content %}
+  <div class="row">
+    <div class="col mt-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Главная</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'departments_list_url' %}">Научно-исследовательские отделы</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ department.short_title }}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="d-none d-md-block col-md-4">
+    <ul class="list-group">
+      {% for department in departments %}
+        <li class="list-group-item"><a class="list_item__link" href="{{department.get_absolute_url}}">{{ department.title|upper }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-8 col-12">
+      <div class="row">
+        <div class="col w-100 mb-3 text-center text-md-left">
+          <h7 class="">{{ department.title }}</h7>
+        </div>
+      </div>
+      <div class="row align-items-center mb-3">
+        <div class="col-6 col-md-5">
+          <img class="img-fluid rounded" src="{{ department.image.url }}" alt="head_photo">
+        </div>
+        <div class="col-6 col-md-7">
+          <p class="font-weight-normal">Начальник отдела: {{ department.head_of_department }}</p>
+          <p class="font-weight-normal">Телефон/факс: {{ department.phone }}</p>
+          <p class="font-weight-normal">E-mail: {{ department.email }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col w-100">
+          <button class="btn btn-outline-primary btn-sm font-weight-bold disabled">Работы и услуги:</button>
+          <p class="text-justify">{{ department.text|safe }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col w-100">
+          <button class="btn btn-outline-primary btn-sm font-weight-bold disabled">Направления научной деятельности:</button>
+          <p>{{ department.science|safe }}</p>
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

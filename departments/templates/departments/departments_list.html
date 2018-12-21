@@ -1,0 +1,44 @@
+{% extends "departments_base.html" %}
+
+{% block title %}
+  Научно-исследовательские отделы - {{ block.super }}
+{% endblock title %}
+
+
+{% block content %}
+  <div class="row">
+    <div class="col mt-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Главная</a></li>
+          <li class="breadcrumb-item">Научно-исследовательские отделы</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card-desk">
+        <div class="row">
+          <div class="col">
+            <h3 class="text-left font-weight-normal">Научно-исследовательские отделы:</h3>
+          </div>
+        </div>
+        <div class="row">
+            {% for department in departments %}
+            <div class="col-12 col-sm-6 col-md-3 mb-5">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h7 class="card-title"><a class="card__link"
+                      href="{{ department.get_absolute_url }}">{{ department.title|upper }}</a></h7>
+                  <p class="">({{ department.short_title }})</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

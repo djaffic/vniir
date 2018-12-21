@@ -1,0 +1,43 @@
+{% extends "departments_base.html" %}
+
+{% block title %}
+Руководство - {{ block.super }}
+{% endblock title %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item active"><a href="{% url 'managements_list_url' %}">Руководство</a></li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col w-100">
+        <div class="row">
+            <div class="col">
+                <h3>Руководство</h3>
+            </div>
+        </div>
+        {% for management in managements %}
+        <div class="row align-items-center mb-3">
+            <div class="col-4">
+                <a href="{{ management.get_absolute_url }}"><img class="img-fluid rounded" src="{{ management.image.url }}" alt="management_img"></a>
+            </div>
+            <div class="col-8 font-weight-normal">
+                <p>{{ management.full_name }}</p>
+                <p>{{ management.position }}</p>
+                <p>{{ management.text }}</p>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

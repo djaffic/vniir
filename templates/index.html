@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- articles -->
+<div class="row align-items-center m-0 shadow p-2"">
+    <div class="col-12 col-md-7 d-flex justify-content-center main__img px-0">
+        <a href="{{ last_article.get_absolute_url }}">
+            <img class="img-fluid header__img" src="{{ last_article.image.url }}" alt="">
+        </a>
+    </div>
+    <div class="d-none d-md-block text-center col-md-5 main__img_title">
+        <p class="main_title__pubdate text-md-center">{{ last_article.pub_date }}</p>
+            <h4 class="justify-self-center main_title__text">{{ last_article.title }}</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card-deck mt-3">
+            <div class="row">
+                {% for article in ordered_articles %}
+                <div class="col-sm-12 mb-sm-3 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body position-relative">
+                            <h5 class="card-title text-center">{{ article.title }}</h5>
+                            <p class="card-text text-justify">{{ article.text|truncatewords:30 }}</p>
+                            <a href="{{ article.get_absolute_url }}"
+                               class="btn btn-primary btn-sm position-absolute btn_bottom">Подробнее</a>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">{{ article.pub_date }}</small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-12 w-100 d-flex articles justify-content-md-end">
+                <a href="{% url 'articles_url' %}" class="btn btn-outline-primary btn-rounded waves-effect">Читать все
+                    новости</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- site links end -->
+
+<div class="row">
+    <div class="col my-3">
+        <div class="mw-100 mh-100"><img src="{% static 'img/cert_icons/gost.jpg'%}" alt="" class="img-fluid"></div>
+    </div>
+    <div class="col my-3">
+        <div class="mw-100 mh-100"><img src="{% static 'img/cert_icons/oiml.jpg' %}" alt="" class="img-fluid"></div>
+    </div>
+    <div class="col my-3">
+        <div class="mw-100 mh-100"><img src="{% static 'img/cert_icons/iqnet.jpg' %}" alt="" class="img-fluid"></div>
+    </div>
+    <div class="col my-3">
+        <div class="mw-100 mh-100"><img src="{% static 'img/cert_icons/mgs.jpg' %}" alt="" class="img-fluid"></div>
+    </div>
+    <div class="col my-3">
+        <div class="mw-100 mh-100"><img src="{% static 'img/cert_icons/koomet.jpg' %}" alt="" class="img-fluid"></div>
+    </div>
+    <div class="col my-3">
+        <div class="mw-100 mh-100"><img src="{% static 'img/cert_icons/st.peterburg.jpg' %}" alt=""
+                                           class="img-fluid"></div>
+    </div>
+</div>
+
+
+
+<!-- partner slider -->
+
+
+<!--<div class="row owl-carousel mx-auto">-->
+    <!--{% for partner in partners %}-->
+    <!--<div class="col partners">-->
+        <!--<img src="{{ partner.icon.url }}" alt="" class="img-fluid partner__image">-->
+        <!--<p class="partner__name text-center">{{ partner.short_name }}</p>-->
+    <!--</div>-->
+    <!--{% endfor %}-->
+<!--</div>-->
+<!-- partner slider end -->
+{% endblock content%}

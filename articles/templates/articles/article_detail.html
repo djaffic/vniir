@@ -1,0 +1,43 @@
+{% extends "base_article.html" %}
+
+{% block title %}
+{{ article.title }}
+{% endblock title %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'articles_url' %}">Новости</a></li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <div class="card mb-3">
+            <ul class="list-group list-group-flush">
+                {% for tag in article.tags.all %}
+                <li class="list-group-item">{{ tag.title|title }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ article.title }}</h5>
+                <small class="card-subtitle mb-2 text-muted">{{ article.pub_date }}</small>
+                <p class="card-text text-justify">{{ article.text|safe }}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- </div> -->
+<!-- </div> -->
+{% endblock content %}

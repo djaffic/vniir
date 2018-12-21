@@ -1,0 +1,299 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}
+    ФГУП ВНИИР
+  {% endblock title %}
+  </title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Roboto Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+</head>
+
+<body>
+  <!--  header -->
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center text-sm-left text-uppercase header_top__title">
+        <a class="" href="https://gost.ru">Федеральное агентство по техническому регулированию и метрологии</a>
+      </div>
+    </div>
+    <div class="row align-items-center header__title d-flex">
+        <div class="col-2 w-100 header__image pr-0 pl-0 d-none d-sm-none d-md-block">
+          <img class="img-gluid" src="{% static 'img/logo_vniir.png' %}" alt="logo_placeholder">
+        </div>
+        <div class="col-8 text-center text-sm-left text-uppercase font-weight-bold header__fullname">
+          Федеральное государственное унитарное предприятие "Всероссийский научно-исследовательский институт расходометрии"
+        </div>
+        <form class="form-inline my-2 my-lg-0 col-12 w-100 col-lg-2 ml-auto" action="{% url 'search' %}" method="get">
+          <input class="d-block w-100 ml-auto form-control-sm active-cyan-2 text-right header__search mr-0"
+                 type="search" placeholder="Search" aria-label="Search" name="q" id="search" value="{{ q }}">
+          <!-- <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+        <!--<input class="col-2 ml-auto form-control-sm active-cyan-2 text-right header__search" type="text" placeholder="Search" aria-label="Search">-->
+    </div>
+  <!-- header end -->
+  <!-- nav -->
+    <div class="row">
+      <div class="col">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar__bg">
+          <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+              <a class="navbar-brand" href="/">Главная</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse text-center" id="navbarsExample11">
+                  <ul class="navbar-nav">
+                    <li class="nav-item dropdown mx-3">
+                      <a class="nav-link dropdown-toggle font-weight-normal" href="#" id="navbarDropdown" role="button"
+                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        О предприятии
+                      </a>
+                      <div class="dropdown-menu navbar__bg" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='about' %}">Об институте</a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='history' %}">История института</a>
+                        <a class="dropdown-item text-white font-weight-normal" href="{% url 'managements_list_url' %}">
+                          Руководство</a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='management-kachestva' %}">Менеджмент качества</a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='hr' %}">Вакансии</a>
+                      </div>
+                    </li>
+                    <li class="nav-item dropdown mx-3">
+                      <a class="nav-link dropdown-toggle font-weight-normal" href="#" id="navbarDropdown" role="button"
+                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Деятельность
+                      </a>
+                      <div class="dropdown-menu navbar__bg" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'departments_list_url' %}">Отделы
+                        </a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'standards_and_standards_types_list_url' %}">Эталонная база</a>
+                      </div>
+                    </li>
+                    <li class="nav-item dropdown mx-3">
+                      <a class="nav-link dropdown-toggle font-weight-normal" href="#" id="navbarDropdown" role="button"
+                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Документы
+                      </a>
+                      <div class="dropdown-menu navbar__bg font-weight-normal" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='accreditation-certificates' %}">Аттестаты
+                          аккредитации</a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='quality-certificates' %}">Сертификаты по системе
+                          менеджмента качетсва</a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='ustav' %}">Уставные документы</a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='company-detail' %}">Реквизиты предприятия</a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='zakupki' %}">Закупки</a>
+                      </div>
+                    </li>
+                    <li class="nav-item dropdown mx-3">
+                      <a class="nav-link dropdown-toggle font-weight-normal" href="#" id="navbarDropdown" role="button"
+                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Публикации
+                      </a>
+                      <div class="dropdown-menu navbar__bg" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='statya' %}">Статьи</a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='patents' %}">Патенты</a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='conferense-reports' %}">Материалы конференций</a>
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='wrote-documents' %}">Список документов, разработанных ФГУП
+                          "ВНИИР"</a>
+                      </div>
+                    </li>
+                    <li class="nav-item dropdown mx-3">
+                      <a class="nav-link dropdown-toggle font-weight-normal" href="#" id="navbarDropdown" role="button"
+                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Контакты
+                      </a>
+                      <div class="dropdown-menu navbar__bg" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-white font-weight-normal"
+                           href="{% url 'get_page_url' slug='contacts' %}">Контакты</a>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  <!-- nav end -->
+  {% block content %}
+  <!-- articles -->
+  <div class="row align-items-center m-0" style="background-color:beige;">
+    <div class="col-12 col-md-7 main__img px-0">
+      <img class="img-fluid" src="https://via.placeholder.com/650x400" alt="">
+    </div>
+    <div class="d-none d-md-block text-center col-md-5 main__img_title">
+      <p class="main_title__pubdate">28.11.2018</p>
+      <h4 class="main_title__text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore obcaecati dolores fuga repudiandae maiores nobis enim quo et illum non.</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <div class="card border-0">
+          <div class="card-body">
+            <h5 class="card-title">Article Title</h5>
+            <p class="card-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam iure animi exercitationem consequatur facere molestias laboriosam numquam voluptates magnam saepe, accusantium reiciendis ducimus maiores a. Facere quasi delectus nam iusto?</p>
+            <a href="#" class="btn btn-primary">Подробнее</a>
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card border-0">
+        <div class="card-body">
+          <h5 class="card-title">Article Title</h5>
+          <p class="card-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam iure animi exercitationem consequatur facere molestias laboriosam numquam voluptates magnam saepe, accusantium reiciendis ducimus maiores a. Facere quasi delectus nam iusto?</p>
+          <a href="#" class="btn btn-primary">Подробнее</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card border-0">
+        <div class="card-body">
+          <h5 class="card-title">Article Title</h5>
+          <p class="card-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam iure animi exercitationem consequatur facere molestias laboriosam numquam voluptates magnam saepe, accusantium reiciendis ducimus maiores a. Facere quasi delectus nam iusto?</p>
+          <a href="#" class="btn btn-primary">Подробнее</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 w-100 d-flex articles justify-content-md-end">
+      <a href="#" class="btn btn-outline-primary btn-rounded waves-effect">Читать все новости</a>
+    </div>
+  </div>
+    <!-- articles end -->
+
+    <!-- partner slider -->
+
+    <!--<div class="row owl-carousel mx-auto">-->
+      <!--<div class="col partners">-->
+          <!--<img src="https://via.placeholder.com/150x150" alt="" class="partner__image">-->
+          <!--<p class="partner__name text-center">Partner1</p>-->
+      <!--</div>-->
+      <!--<div class="col partners">-->
+          <!--<img src="https://via.placeholder.com/150x150" alt="" class="partner__image">-->
+          <!--<p class="partner__name text-center">Partner2</p>-->
+      <!--</div>-->
+      <!--<div class="col partners">-->
+          <!--<img src="https://via.placeholder.com/150x150" alt="" class="partner__image">-->
+          <!--<p class="partner__name text-center">Partner3</p>-->
+      <!--</div>-->
+      <!--<div class="col partners">-->
+          <!--<img src="https://via.placeholder.com/150x150" alt="" class="partner__image">-->
+          <!--<p class="partner__name text-center">Partner4</p>-->
+      <!--</div>-->
+      <!--<div class="col partners">-->
+          <!--<img src="https://via.placeholder.com/150x150" alt="" class="partner__image">-->
+          <!--<p class="partner__name text-center">Partner5</p>-->
+      <!--</div>-->
+      <!--<div class="col partners">-->
+          <!--<img src="https://via.placeholder.com/150x150" alt="" class="partner__image">-->
+          <!--<p class="partner__name text-center">Partner6</p>-->
+      <!--</div>-->
+    <!--</div>-->
+    {% endblock content%}
+    <!-- partner slider end -->
+
+    <!-- footer -->
+    <div class="row">
+      <div class="footer col w-100 rounded">
+        <div class="row footer_first__row">
+          <div class="col-6 text-uppercase font-weight-bold">
+            Федеральное государственное унитарное предприятие "Всероссийский научно-исследовательский институт расходометрии
+          </div>
+          <div class="col-6">
+            <p class="footer__address">Адрес: 420088, г. Казань, ул.Подлужная 4</p>
+            <p class="footer__phone">Телефон: +7 (843) 289-99-99</p>
+            <p class="footer__email">E-Mail: email@example.com</p>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col w-100 text-center">
+                <p>&copy Все права защищены. 2018</p>
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer end -->
+  </div>
+<!-- container end -->
+
+
+
+
+
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script>
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        items:7,
+        loop:true,
+        autoplay:true,
+        autoplayTimeout:5000,
+        autoplayHoverPause:true,
+        responsiveClass:true,
+        responsive:{
+          0:{
+            items:3,
+            nav:false,
+            center:true
+          },
+          600:{
+            items:3,
+            nav:false,
+            center:true
+          },
+          1000:{
+            items:6,
+            nav:false
+          }
+        }
+    });
+    $('.play').on('click',function(){
+        owl.trigger('play.owl.autoplay',[1000])
+    })
+    $('.stop').on('click',function(){
+        owl.trigger('stop.owl.autoplay')
+    })
+  </script>
+</body>
+
+</html>
